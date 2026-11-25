@@ -1,6 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>DreamCatcher | Creative Digital Agency</title><!-- Google Fonts --><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"><!-- Font Awesome --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"><style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>DreamCatcher | Creative Digital Agency</title><!-- Google Fonts --><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"><!-- Font Awesome --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
 
 /* GENERAL */
 
@@ -21,43 +22,83 @@ body {
     margin: auto;
 }
 
-/* HEADER */
+/* ============================ PREMIUM HEADER ============================ */
 
 .main-header {
     width: 100%;
-    background: #ffffff;
+    background: rgba(7, 17, 40, 0.97);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     position: sticky;
     top: 0;
-    z-index: 1000;
-    box-shadow: 0 3px 20px rgba(0,0,0,0.06);
+    left: 0;
+    z-index: 9999;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 5px 30px rgba(0,0,0,0.12);
+    transition: all 0.3s ease;
+}
+
+.container {
+    max-width: 1250px;
+    width: 90%;
+    margin: auto;
 }
 
 .header-container {
-    height: 85px;
+    min-height: 85px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
+
 
 /* LOGO */
 
 .logo {
-    font-family: 'Manrope', sans-serif;
-    font-size: 29px;
-    font-weight: 800;
-    color: #17172b;
+    display: flex;
+    align-items: center;
+    gap: 12px;
     text-decoration: none;
-    letter-spacing: -1.5px;
 }
 
-.logo span {
-    color: #7257ff;
+.logo-icon {
+    width: 43px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #4361ee, #9b5de5);
+    color: white;
+    font-size: 21px;
+    box-shadow: 0 5px 20px rgba(67,97,238,0.35);
 }
 
-.logo small {
-    color: #ff6b9a;
-    font-size: 35px;
+.logo-text {
+    font-size: 25px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -1px;
+    position: relative;
 }
+
+.logo-text span {
+    color: #6c8cff;
+}
+
+.logo-text > small:first-child {
+    color: #a855f7;
+}
+
+.logo-tagline {
+    display: block;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: #aab5ce;
+    font-weight: 500;
+    margin-top: 2px;
+}
+
 
 /* NAVIGATION */
 
@@ -70,152 +111,204 @@ body {
 .nav-links {
     display: flex;
     align-items: center;
+    gap: 32px;
     list-style: none;
-    gap: 30px;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links li {
     position: relative;
 }
 
-.nav-links li a {
+.nav-links li > a {
     text-decoration: none;
-    color: #29293b;
+    color: #d8deee;
     font-size: 14px;
-    font-weight: 600;
-    transition: 0.3s;
+    font-weight: 500;
+    padding: 32px 0;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    transition: 0.3s ease;
 }
 
-.nav-links li a:hover,
-.nav-links li a.active {
-    color: #7257ff;
+.nav-links li > a:hover,
+.nav-links li > a.active {
+    color: #829cff;
 }
 
-/* DROPDOWN */
-
-.dropdown > a i {
-    font-size: 10px;
-    margin-left: 4px;
+.nav-links li > a::after {
+    content: "";
+    position: absolute;
+    bottom: 22px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg,#4361ee,#a855f7);
+    transition: width 0.3s ease;
 }
+
+.nav-links li > a:hover::after,
+.nav-links li > a.active::after {
+    width: 100%;
+}
+
+
+/* SERVICES DROPDOWN */
 
 .dropdown-menu {
     position: absolute;
-    top: 35px;
-    left: 0;
-    width: 210px;
-    background: white;
+    top: 100%;
+    left: -25px;
+    width: 270px;
+    background: #ffffff;
+    padding: 12px;
+    border-radius: 14px;
     list-style: none;
-    padding: 12px 0;
-    border-radius: 12px;
-    box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+    box-shadow: 0 15px 45px rgba(0,0,0,0.2);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(10px);
-    transition: 0.3s;
+    transform: translateY(15px);
+    transition: 0.3s ease;
 }
 
-.dropdown-menu li a {
-    display: block;
-    padding: 12px 20px;
-}
-
-.dropdown-menu li a:hover {
-    background: #f5f2ff;
-}
-
-.dropdown:hover .dropdown-menu {
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
-/* BUTTON */
+.dropdown-menu li a {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #14213d;
+    transition: 0.3s ease;
+}
+
+.dropdown-menu li a:hover {
+    background: #f0f3ff;
+    color: #4361ee;
+}
+
+.dropdown-menu li a > i {
+    font-size: 21px;
+    color: #536dfe;
+}
+
+.dropdown-menu li a span {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.dropdown-menu li a small {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    color: #777;
+    margin-top: 4px;
+}
+
+
+/* GET A QUOTE BUTTON */
 
 .quote-btn {
-    background: linear-gradient(100deg, #7257ff, #ff6b9a);
-    color: white;
-    padding: 13px 22px;
-    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 23px;
+    background: linear-gradient(120deg,#4361ee,#9146e8);
+    color: #ffffff;
+    border-radius: 8px;
     text-decoration: none;
-    font-size: 13px;
-    font-weight: 700;
-    transition: 0.3s;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 6px 20px rgba(67,97,238,0.3);
+    transition: 0.3s ease;
 }
 
 .quote-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(114,87,255,0.3);
+    box-shadow: 0 10px 30px rgba(67,97,238,0.45);
 }
 
-/* MOBILE MENU */
+.quote-btn i {
+    transition: transform 0.3s ease;
+}
+
+.quote-btn:hover i {
+    transform: translateX(5px);
+}
+
+
+/* MOBILE BUTTON */
 
 .menu-toggle {
     display: none;
-    background: none;
+    background: transparent;
     border: none;
+    color: white;
     font-size: 25px;
-    color: #7257ff;
     cursor: pointer;
 }
 
-/* HERO PLACEHOLDER */
 
-.hero {
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 30px;
-    background: linear-gradient(120deg, #f5f2ff, #fff0f5);
+/* SMOOTH SCROLL */
+
+html {
+    scroll-behavior: smooth;
 }
 
-.hero h1 {
-    font-family: 'Manrope', sans-serif;
-    font-size: clamp(35px, 6vw, 65px);
-    color: #17172b;
-}
 
-.hero h1 span {
-    color: #7257ff;
-}
+/* ============================
+   RESPONSIVE DESIGN
+============================ */
 
-.hero p {
-    color: #68687b;
-    margin-top: 15px;
-}
+@media (max-width: 992px) {
 
-/* RESPONSIVE */
-
-@media(max-width: 1000px) {
+    .header-container {
+        min-height: 75px;
+    }
 
     .menu-toggle {
         display: block;
     }
 
     .navbar {
-        display: none;
         position: absolute;
-        top: 85px;
+        top: 100%;
         left: 0;
         width: 100%;
-        background: white;
-        padding: 25px 5%;
+        background: #081329;
+        display: none;
         flex-direction: column;
-        align-items: flex-start;
-        gap: 25px;
+        align-items: stretch;
+        padding: 25px 5%;
+        gap: 20px;
+        border-top: 1px solid rgba(255,255,255,0.1);
     }
 
-    .navbar.show {
+    .navbar.active {
         display: flex;
     }
 
     .nav-links {
         flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        gap: 22px;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .nav-links li > a {
+        padding: 15px 0;
+    }
+
+    .nav-links li > a::after {
+        display: none;
     }
 
     .dropdown-menu {
@@ -224,31 +317,35 @@ body {
         opacity: 1;
         visibility: visible;
         transform: none;
+        width: 100%;
+        margin-top: 5px;
         box-shadow: none;
-        padding-left: 15px;
-    }
-
-    .dropdown:hover .dropdown-menu {
-        display: none;
+        background: #ffffff;
     }
 
     .dropdown.open .dropdown-menu {
         display: block;
     }
+
+    .quote-btn {
+        justify-content: center;
+        width: 100%;
+    }
 }
 
-@media(max-width: 480px) {
+@media (max-width: 480px) {
+
+    .logo-text {
+        font-size: 21px;
+    }
+
+    .logo-icon {
+        width: 38px;
+        height: 38px;
+    }
 
     .header-container {
-        height: 72px;
-    }
-
-    .logo {
-        font-size: 25px;
-    }
-
-    .navbar {
-        top: 72px;
+        min-height: 70px;
     }
 
 }
@@ -673,52 +770,103 @@ grid-template-columns: 1fr;
 </style>
 </head>
   <body>
-  
-  <!-- HEADER START --><header class="main-header"><div class="container header-container"><a href="index.html" class="logo">
-    Dream<span>Catcher</span><small>.</small>
-</a>
+      
+<!-- HEADER SECTION START -->
+      <header class="main-header">
 
-<button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-    <i class="fas fa-bars"></i>
-</button>
+    <div class="container header-container">
 
-<nav class="navbar" id="navbar">
+        <!-- LOGO -->
+        <a href="index.html" class="logo">
+            <span class="logo-icon">
+                <i class="fas fa-cube"></i>
+            </span>
 
-    <ul class="nav-links">
+            <span class="logo-text">
+                Dream<span>Catcher</span><small>.</small>
+                <small class="logo-tagline">CREATIVE DIGITAL AGENCY</small>
+            </span>
+        </a>
 
-        <li><a href="index.html" class="active">Home</a></li>
 
-        <li><a href="about.html">About Us</a></li>
+        <!-- MOBILE MENU BUTTON -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
 
-        <li class="dropdown">
 
-            <a href="#" id="servicesLink">
-                Services <i class="fas fa-chevron-down"></i>
-            </a>
+        <!-- NAVIGATION -->
+        <nav class="navbar" id="navbar">
 
-            <ul class="dropdown-menu">
+            <ul class="nav-links">
 
-                <li><a href="digital-marketing.html">Digital Marketing</a></li>
+                <li>
+                    <a href="index.html" class="active">Home</a>
+                </li>
 
-                <li><a href="graphic-design.html">Graphic Design</a></li> 
+                <li>
+                    <a href="about.html">About Us</a>
+                </li>
+
+                <!-- SERVICES DROPDOWN -->
+                <li class="dropdown">
+
+                    <a href="javascript:void(0)" id="servicesLink">
+                        Services
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+
+                    <ul class="dropdown-menu">
+
+                        <li>
+                            <a href="digital-marketing.html">
+                                <i class="fas fa-bullhorn"></i>
+                                <span>
+                                    Digital Marketing
+                                    <small>Grow your digital presence</small>
+                                </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="graphic-design.html">
+                                <i class="fas fa-palette"></i>
+                                <span>
+                                    Graphic Design
+                                    <small>Creative visual experiences</small>
+                                </span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+                <li>
+                    <a href="portfolio.html">Portfolio</a>
+                </li>
+
+                <li>
+                    <a href="contact.html">Contact Us</a>
+                </li>
 
             </ul>
 
-        </li>
 
-        <li><a href="portfolio.html">Portfolio</a></li>
+            <!-- QUOTE BUTTON -->
+            <a href="contact.html" class="quote-btn">
+                Get a Quote
+                <i class="fas fa-arrow-right"></i>
+            </a>
 
-        <li><a href="contact.html">Contact Us</a></li>
+        </nav>
 
-    </ul>
+    </div>
 
-    <a href="contact.html" class="quote-btn">
-        Get a Quote <i class="fas fa-arrow-right"></i>
-    </a>
-
-</nav>
-
-</div></header><!-- HEADER END --><!-- HERO SECTION START --><section class="hero-section"><div class="hero-container">
+</header>
+      <!-- HEADER SECTION END -->
+  
+<!-- HERO SECTION START --><section class="hero-section"><div class="hero-container">
 
     <!-- LEFT CONTENT -->
 
@@ -980,34 +1128,55 @@ grid-template-columns: 1fr;
 
   
   
-  <!-- JAVASCRIPT --><script>
+  <!-- JAVASCRIPT -->
+      
+   <script>
 
 const menuToggle = document.getElementById("menuToggle");
 const navbar = document.getElementById("navbar");
+const servicesLink = document.getElementById("servicesLink");
 
+
+// Mobile Navigation
 menuToggle.addEventListener("click", function() {
 
-    navbar.classList.toggle("show");
+    navbar.classList.toggle("active");
 
     const icon = menuToggle.querySelector("i");
 
-    if (navbar.classList.contains("show")) {
-        icon.classList.replace("fa-bars", "fa-xmark");
+    if (navbar.classList.contains("active")) {
+        icon.classList.replace("fa-bars", "fa-times");
     } else {
-        icon.classList.replace("fa-xmark", "fa-bars");
+        icon.classList.replace("fa-times", "fa-bars");
     }
 
 });
 
-const dropdown = document.querySelector(".dropdown");
-const servicesLink = document.getElementById("servicesLink");
 
-servicesLink.addEventListener("click", function(event) {
+// Mobile Services Dropdown
+servicesLink.addEventListener("click", function() {
 
-    if (window.innerWidth <= 1000) {
-        event.preventDefault();
-        dropdown.classList.toggle("open");
+    if (window.innerWidth <= 992) {
+
+        this.parentElement.classList.toggle("open");
+
     }
+
+});
+
+
+// Close Menu After Clicking Navigation
+document.querySelectorAll(".nav-links a:not(#servicesLink)")
+.forEach(link => {
+
+    link.addEventListener("click", function() {
+
+        navbar.classList.remove("active");
+
+        menuToggle.querySelector("i")
+        .classList.replace("fa-times", "fa-bars");
+
+    });
 
 });
 
